@@ -22,15 +22,19 @@ MyBookStore là website giúp người dùng:
 ```bash
 git clone https://github.com/LinhDU/mybookstore.git
 cd mybookstore
+```
 2️⃣ Cài thư viện
 ```bash
 npm run dev
+```
 📁 Cấu trúc thư mục (cơ bản)
+```bash
 src/
  ├─ assets/
  ├─ components/
  ├─ pages/
  ├─ App.jsx
  └─ main.jsx
+```
 📌 Ghi chú
 Project phục vụ cho mục đích học tập và đồ án môn học.

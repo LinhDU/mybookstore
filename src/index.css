@@ -75,24 +75,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* Định dạng lại nút Read More (Không còn là link xanh) */
-.hero-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 30px;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  transition: 0.3s;
-  background: transparent;
-}
-
-.hero-btn:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-}
 .nav-link:hover {
   color: var(--primary-color) !important;
 }
@@ -418,4 +400,14 @@ body {
 .price {
   color: #9c6b3d;
   font-weight: 500;
+}
+.view-all{
+  color: #b38b59;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.view-all:hover{
+  text-decoration: none;
+  color: #967325;
 }

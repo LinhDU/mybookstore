@@ -8,9 +8,6 @@ function AllProducts() {
   return (
     <div style={{ backgroundColor: "#f8f6f1", minHeight: "100vh" }}>
       <div className="container py-5">
-        <h2 className="text-center mb-5 fw-serif">
-          📚 Tất cả sản phẩm
-        </h2>
 
         <div className="row g-4">
           {listBooks.map((book) => (

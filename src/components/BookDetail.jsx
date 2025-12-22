@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { listBooks } from '../data';
 import { Container, Tabs, Tab, Row, Col } from 'react-bootstrap';
 import { ChevronUp, ChevronDown, ShoppingCart } from 'lucide-react';
+import defaultBook from '../assets/default-book.png'; 
 
 const BookDetail = () => {
   const { id } = useParams();
@@ -33,6 +34,10 @@ const BookDetail = () => {
                   alt={book.title} 
                   className="img-fluid shadow-lg" 
                   style={{ maxWidth: '400px', borderRadius: '4px' }}
+                  onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = defaultBook;
+                  }}
                 />
               </div>
             </Col>

@@ -12,7 +12,7 @@ function Header() {
       <Container fluid className="px-5">
         
         {/* LOGO – BÊN TRÁI */}
-        <Navbar.Brand href="#" className="fw-bold fs-2">
+        <Navbar.Brand href="http://localhost:5173/#" className="fw-bold fs-2">
           Neverland
         </Navbar.Brand>
 

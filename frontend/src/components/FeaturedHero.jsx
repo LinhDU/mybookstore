@@ -26,7 +26,7 @@ const FeaturedHero = () => {
       <Carousel 
         indicators={true} 
         interval={5000}
-        fade={true} // Hiệu ứng chuyển cảnh mờ dần sang trọng
+        //fade={true} // Hiệu ứng chuyển cảnh mờ dần sang trọng
         nextIcon={<div className="nav-circle shadow-sm"><ArrowRight size={22} /></div>}
         prevIcon={<div className="nav-circle shadow-sm"><ArrowLeft size={22} /></div>}
       >

@@ -1,0 +1,453 @@
+/* ==========================================================================
+   1. BIẾN GLOBAL (MÀU SẮC & FONT CHỮ)
+   ========================================================================== */
+:root {
+  /* Bảng màu Neverland */
+  --bg-cream-light: #fdfaf6;   /* Nền trang chủ chính */
+  --bg-cream-dark: #f7f2ec;    /* Nền Navbar & Sidebar Admin */
+  --color-gold: #b38b59;       /* Màu vàng đồng nhấn (Accent) */
+  --color-gold-dark: #967325;
+  --text-main: #2f2f2f;
+  --text-muted: #777777;
+  --border-color: #e6dfd6;
+  
+  /* Font chữ */
+  --font-be: 'Be Vietnam Pro', sans-serif;
+  --font-lora: 'Lora', serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* RESET CƠ BẢN */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-be);
+  background-color: var(--bg-cream-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+  display: block; /* Sửa lỗi Vite flex center */
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* ==========================================================================
+   2. NAVBAR & FOOTER (USER)
+   ========================================================================== */
+.booksaw-navbar {
+  background-color: var(--bg-cream-dark) !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+}
+
+.booksaw-navbar .navbar-brand {
+  font-family: var(--font-lora);
+  font-size: 2.2rem !important;
+  font-weight: 700;
+  color: var(--text-main) !important;
+}
+
+.booksaw-navbar .nav-link {
+  font-size:1.1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  color: var(--text-main) !important;
+}
+
+.booksaw-navbar .nav-link:hover {
+  color: var(--color-gold) !important;
+}
+
+footer {
+  background-color: var(--bg-cream-dark);
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ==========================================================================
+   3. TRANG CHỦ (HERO & FEATURED BOOKS)
+   ========================================================================== */
+
+/* Hero Section */
+#billboard {
+  background-color: var(--bg-cream-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+}
+
+.pattern-overlay {
+  background-image: url('/images/pattern-overlay.png'); 
+  background-repeat: repeat;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem) !important;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+
+.hero-desc {
+  color: var(--text-muted);
+  max-width: 500px;
+  margin-bottom: 35px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 35px;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.hero-btn:hover {
+  background-color: var(--color-gold);
+  color: white;
+}
+
+/* Ảnh Hero & Blob */
+.hero-book-wrapper {
+  position: relative;
+  z-index: 10;
+  filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.15));
+}
+
+.hero-book-img {
+  max-height: 500px;
+  width: auto;
+  display: block;
+}
+
+.blob-bg {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px; height: 550px;
+  background-color: #e9e7df;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Featured Books Grid */
+.featured-section { padding: 100px 0; }
+.featured-subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #999;
+  text-transform: uppercase;
+}
+.featured-title {
+  font-family: var(--font-lora);
+  font-size: 3rem;
+  margin-bottom: 50px;
+}
+
+.book-card { margin-bottom: 40px; transition: 0.3s; }
+.book-card:hover { transform: translateY(-10px); }
+.book-image-wrapper {
+  background-color: var(--bg-cream-dark);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+.book-image-wrapper img { width: 100%; max-width: 200px; box-shadow: 10px 10px 20px rgba(0,0,0,0.05); }
+
+/* Điều hướng Slide */
+.carousel-control-prev, .carousel-control-next { width: 8% !important; opacity: 1 !important; }
+.nav-circle {
+  width: 50px; height: 50px;
+  background: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-main); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.view-all{
+  color:#2f2f2f;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: transparent;
+}
+.view-all:hover{
+  color: #b38b59;
+}
+
+/* ==========================================================================
+   4. TRANG CHI TIẾT SÁCH (BOOK DETAIL)
+   ========================================================================== */
+.custom-detail-tabs .nav-link {
+  font-weight: 700;
+  color: #999 !important;
+  border: none !important;
+  padding: 15px 30px !important;
+  text-transform: uppercase;
+}
+.custom-detail-tabs .nav-link.active {
+  color: var(--text-main) !important;
+  border-bottom: 3px solid var(--text-main) !important;
+  background: transparent !important;
+}
+
+.detail-content.collapsed {
+  max-height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+.detail-content.collapsed::after {
+  content: ""; 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100px;
+  background: linear-gradient(transparent, #fff);
+}
+.quote-text{
+  font-style: italic;
+}
+.btn-toggle-view, 
+.btn-read-more,
+.btn-toggle-content {
+    border: none;        
+    background: transparent; 
+    outline: none;       
+    box-shadow: none;    
+    padding: 0;                     
+    cursor: pointer;        
+    color:#2f2f2f;                 
+    font-weight: 700;
+}
+/*Admin*/
+
+.admin-container {
+  display: flex !important;
+  min-height: 100vh !important;
+  width: 100%;
+}
+
+.admin-sidebar {
+  width: 280px;
+  min-width: 280px;
+  background-color: var(--bg-cream-dark);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.admin-logo {
+  font-family: var(--font-lora);
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.admin-status {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.admin-menu { flex: 1; }
+
+.admin-link {
+  display: flex !important;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  color: #555 !important;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.admin-link:hover {
+  background-color: rgba(179, 139, 89, 0.1);
+  color: var(--color-gold) !important;
+}
+
+.admin-link.active {
+  background-color: var(--color-gold) !important;
+  color: #ffffff !important;
+}
+
+/*Admin */
+.admin-main { flex: 1; display: flex; flex-direction: column; }
+.admin-topbar {
+  height: 70px; background: #fff; border-bottom: 1px solid var(--border-color);
+  display: flex; align-items: center; padding: 0 40px; justify-content: flex-end;
+}
+.admin-body { padding: 40px; 
+  background-color: var(--bg-cream-light); 
+  flex: 1; 
+}
+
+.admin-card {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.form-section-title {
+  color: var(--color-gold);
+  font-weight: 700;
+  border-bottom: 2px solid var(--bg-cream-dark);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 0.25rem rgba(179, 139, 89, 0.1);
+}
+
+.btn-admin-save {
+  background-color: var(--color-gold) !important;
+  border: none !important;
+  font-weight: 700;
+  padding: 12px 25px;
+}
+
+.image-upload-area {
+  border: 2px dashed #ddd;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.preview-img {
+  max-height: 250px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.table { 
+  border-color: var(--border-color); 
+}
+
+.table thead {
+   background-color: var(--bg-cream-dark); 
+}
+.table th {
+  font-weight: 700; 
+  color: var(--text-main); 
+  border-bottom: none; 
+}
+/* ÉP BỐ CỤC ADMIN CHIA 2 CỘT */
+.admin-layout-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  background-color: #fdfaf6;
+}
+
+/* SIDEBAR CỐ ĐỊNH BÊN TRÁI */
+.admin-sidebar-fixed {
+  width: 280px !important;
+  min-width: 280px !important;
+  height: 100vh !important;
+  position: sticky !important;
+  top: 0 !important;
+  left: 0 !important;
+  background-color: #f7f2ec !important; 
+  border-right: 1px solid #e6dfd6;
+  padding: 40px 20px;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 1000;
+}
+
+/* PHẦN NỘI DUNG BÊN PHẢI */
+.admin-main-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0; /* Tránh vỡ table */
+}
+
+.admin-topbar {
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid #e6dfd6;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  justify-content: flex-end;
+}
+
+.admin-page-body {
+  padding: 40px;
+  flex: 1;
+}
+
+/* ĐỊNH DẠNG MENU SIDEBAR */
+.admin-logo { 
+  font-family: 'Lora', serif; 
+  font-weight: 700; 
+  color: #2f2f2f; 
+  margin-bottom: 5px; 
+}
+.admin-status { 
+  font-size: 0.7rem; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  color: #b38b59; 
+  font-weight: 700; 
+  margin-bottom: 40px; 
+}
+.admin-menu { 
+  flex: 1; 
+}
+
+.admin-link {
+  display: flex !important;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  color: #555 !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.admin-link:hover { 
+  background-color: rgba(179, 139, 89, 0.1); 
+  color: #b38b59 !important; 
+}
+.admin-link.active { 
+  background-color: #b38b59 !important; 
+  color: #fff !important; 
+}

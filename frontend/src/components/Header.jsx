@@ -13,7 +13,7 @@ function Header() {
         
         {/* LOGO – BÊN TRÁI */}
         <Navbar.Brand href="http://localhost:5173/#" className="fw-bold fs-2">
-          Neverland
+          NEVERLAND
         </Navbar.Brand>
 
         <Navbar.Toggle />

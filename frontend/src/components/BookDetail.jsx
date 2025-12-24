@@ -54,10 +54,7 @@ const BookDetail = () => {
               <div className="short-desc mb-4">
                 <p style={{ color: '#666', lineHeight: '1.8' }}>{book.description}</p>
               </div>
-
-              <button className="btn-add-cart d-flex align-items-center gap-2 mb-5">
-                <ShoppingCart size={20} /> THÊM VÀO GIỎ HÀNG
-              </button>
+              
 
               <div className="quick-specs pt-4" style={{ borderTop: '1px solid #eee' }}>
                 <p className="mb-2"><strong>Thể loại:</strong> <span className="text-muted">{book.category}</span></p>

@@ -21,19 +21,17 @@ const AllProducts = () => {
           // Trường hợp Backend trả về mảng trực tiếp [...]
           setBooks(res.data);
         } else {
-          // Nếu không khớp cái nào thì để mảng rỗng, tránh bị undefined
+
           setBooks([]);
         }
         setLoading(false);
       })
       .catch((err) => {
         console.error("Lỗi kết nối API:", err);
-        setBooks([]); // Nếu lỗi cũng để mảng rỗng để không crash trang
+        setBooks([]);
         setLoading(false);
       });
   }, []);
-
-  // XÓA ĐOẠN CODE LƠ LỬNG Ở ĐÂY (Đoạn {books && books.map...} cũ)
 
   return (
     <div style={{ backgroundColor: "#f8f6f1", minHeight: "100vh" }}>
@@ -42,7 +40,7 @@ const AllProducts = () => {
         <div className="row g-4">
           {loading ? (
             <div className="text-center">Đang tải danh sách sách...</div>
-          ) : (books && books.length > 0) ? ( // 3. Dùng kiểm tra an toàn (books && books.length)
+          ) : (books && books.length > 0) ? ( 
             books.map((book) => (
               <div className="col-lg-3 col-md-4 col-sm-6" key={book._id}>
                 <div

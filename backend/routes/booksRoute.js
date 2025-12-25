@@ -92,5 +92,15 @@ router.delete('/:id', async (req, res) => {
     res.status(500).send({ message: error.message });
   }
 });
-
+// Cập nhật nhanh trạng thái Hero/Featured
+router.patch('/status/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isHero, isFeatured } = req.body;
+    const updatedBook = await Book.findByIdAndUpdate(id, { isHero, isFeatured }, { new: true });
+    res.status(200).json(updatedBook);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+});
 export default router;

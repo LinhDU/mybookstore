@@ -16,6 +16,10 @@ function AdminSidebar() {
         <NavLink to="/admin/books" className={({ isActive }) => isActive ? "admin-link active" : "admin-link"}>
           <BookOpen size={20} /> <span>Quản lý sách</span>
         </NavLink>
+        
+        <NavLink to="/admin/featured-config" className={({ isActive }) => isActive ? "admin-link active" : "admin-link"}>
+          <BookOpen size={20} /> <span>Cấu hình sách nổi bật</span>
+        </NavLink>
       </nav>
 
       <div className="sidebar-footer">

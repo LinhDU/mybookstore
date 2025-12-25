@@ -11,6 +11,7 @@ import AdminLayout from "./admin/AdminLayout";
 
 import AdminBooks from "./admin/AdminBooks";
 import BookForm from "./admin/BookForm";
+import AdminFeatured from "./admin/AdminFeatured";
 
 const UserLayout = () => {
   return (
@@ -35,7 +36,7 @@ function App() {
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>
-          
+          <Route path="featured-config" element={<AdminFeatured />} />
           <Route path="books" element={<AdminBooks />} />
           <Route path="books/add" element={<BookForm />} />
           <Route path="books/edit/:id" element={<BookForm />} />

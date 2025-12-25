@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. BIẾN GLOBAL (MÀU SẮC & FONT CHỮ)
-   ========================================================================== */
+
 :root {
   /* Bảng màu Neverland */
   --bg-cream-light: #fdfaf6;   /* Nền trang chủ chính */
@@ -214,17 +212,11 @@ a {
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important; 
-  
-  /* Kích thước khung (nên to hơn ảnh sách một chút) */
   width: 420px !important; 
   height: 580px !important;
   
-  background-color: #e9e7df; /* Màu kem nhạt */
-  
-  /* ĐỔI TỪ 50% SANG BO GÓC NHẸ HOẶC VUÔNG VỨC */
-  border-radius: 4px !important; /* Bo góc nhẹ cho tinh tế, hoặc 0 nếu muốn vuông hẳn */
-  
-  /* THÊM VIỀN ĐỂ GIỐNG KHUNG ẢNH */
+  background-color: #e9e7df; 
+  border-radius: 4px !important; 
   border: 1px solid #d1cfc7; 
   
   z-index: 1;
@@ -232,7 +224,6 @@ a {
   pointer-events: none;
 }
 
-/* Hiệu ứng trang trí thêm cho khung (tùy chọn) */
 .frame-bg::before {
   content: "";
   position: absolute;
@@ -244,7 +235,6 @@ a {
 }
 
 
-/* Featured Books Grid */
 .featured-section { padding: 100px 0; }
 .featured-subtitle {
   font-size: 0.75rem;
@@ -254,18 +244,33 @@ a {
 }
 .featured-title {
   font-family: var(--font-lora);
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 50px;
 }
 
 .book-card { margin-bottom: 40px; transition: 0.3s; }
 .book-card:hover { transform: translateY(-10px); }
 .book-image-wrapper {
-  background-color: var(--bg-cream-dark);
-  padding: 30px;
+  background-color: #f7f2ec !important; 
+  
+  height: 320px !important; 
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  
+  padding: 20px !important;
   margin-bottom: 20px;
+  transition: 0.3s;
 }
-.book-image-wrapper img { width: 100%; max-width: 200px; box-shadow: 10px 10px 20px rgba(0,0,0,0.05); }
+.book-image-wrapper img { 
+    max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  
+  object-fit: contain; /* Đảm bảo ảnh không bị méo, không bị vỡ hình */
+  box-shadow: 10px 10px 25px rgba(0,0,0,0.1);
+ }
 
 /* Điều hướng Slide */
 .carousel-control-prev, .carousel-control-next { width: 8% !important; opacity: 1 !important; }
@@ -276,6 +281,18 @@ a {
   color: var(--text-main); 
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+.book-title {
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  margin-top: 20px;
+  color: #2f2f2f;
+}
+
+.book-author {
+  font-size: 0.9rem;
+  color: #777;
+}
+
 .view-all{
   color:#2f2f2f;
   font-weight: 700;
@@ -287,10 +304,8 @@ a {
   color: #b38b59;
 }
 
-/* ==========================================================================
-   4. TRANG CHI TIẾT SÁCH (BOOK DETAIL)
-   ========================================================================== */
-/* --- BOOK DETAIL PAGE --- */
+
+/*BOOK DETAIL PAGE*/
 .book-detail-page {
   background-color: #fdfaf6;
   font-family: 'Be Vietnam Pro', sans-serif;
@@ -303,7 +318,7 @@ a {
 }
 
 .detail-book-title {
-  font-family: 'Lora', serif; /* Dùng font có chân cho tiêu đề sang trọng */
+  font-family: 'Lora', serif; 
   font-size: 2.5rem;
   font-weight: 700;
   color: #2f2f2f;
@@ -392,7 +407,7 @@ a {
   left: 0;
   width: 100%;
   height: 100px;
-  background: linear-gradient(transparent, #fff); /* Hiệu ứng mờ đáy */
+  background: linear-gradient(transparent, #fff); 
 }
 
 .btn-toggle-content {
@@ -465,8 +480,13 @@ a {
 /*Admin */
 .admin-main { flex: 1; display: flex; flex-direction: column; }
 .admin-topbar {
-  height: 70px; background: #fff; border-bottom: 1px solid var(--border-color);
-  display: flex; align-items: center; padding: 0 40px; justify-content: flex-end;
+  height: 70px; 
+  background: #fff; 
+  border-bottom: 1px solid var(--border-color);
+  display: flex; 
+  align-items: center; 
+  padding: 0 40px; 
+  justify-content: flex-end;
 }
 .admin-body { padding: 40px; 
   background-color: var(--bg-cream-light); 
@@ -528,7 +548,6 @@ a {
   color: var(--text-main); 
   border-bottom: none; 
 }
-/* ÉP BỐ CỤC ADMIN CHIA 2 CỘT */
 .admin-layout-wrapper {
   display: flex !important;
   flex-direction: row !important;
@@ -537,7 +556,7 @@ a {
   background-color: #fdfaf6;
 }
 
-/* SIDEBAR CỐ ĐỊNH BÊN TRÁI */
+/* SIDEBAR */
 .admin-sidebar-fixed {
   width: 280px !important;
   min-width: 280px !important;
@@ -558,7 +577,7 @@ a {
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
-  min-width: 0; /* Tránh vỡ table */
+  min-width: 0; 
 }
 
 .admin-topbar {
@@ -576,7 +595,7 @@ a {
   flex: 1;
 }
 
-/* ĐỊNH DẠNG MENU SIDEBAR */
+/* SIDEBAR */
 .admin-logo { 
   font-family: 'Lora', serif; 
   font-weight: 700; 
@@ -615,8 +634,7 @@ a {
   background-color: #b38b59 !important; 
   color: #fff !important; 
 }
-/* --- CUSTOM ADMIN BUTTONS --- */
-
+/*CUSTOM ADMIN BUTTONS*/
 .btn-edit-admin {
   background-color: #b38b59 !important;
   border: none !important;
@@ -651,7 +669,7 @@ a {
 }
 /* --- NÚT THÊM SÁCH MỚI (Màu vàng đồng) --- */
 .btn-add-admin {
-  background-color: #b38b59 !important; /* Màu Gold Neverland */
+  background-color: #b38b59 !important; 
   color: white !important;
   border: none !important;
   padding: 10px 25px !important;
@@ -669,4 +687,14 @@ a {
   background-color: #F5E8B7!important;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(179, 139, 89, 0.3);
+}
+.form-check-input:checked {
+  background-color: var(--color-gold) !important;
+  border-color: var(--color-gold) !important;
+}
+
+.admin-card {
+  border: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border-radius: 15px;
 }

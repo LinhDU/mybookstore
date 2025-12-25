@@ -1,51 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react"; // 1. Đảm bảo import đúng
 import { Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Thêm Link để điều hướng
-import { listBooks } from "../data"; // Import dữ liệu từ file giả lập của bạn
-import defaultBook from '../assets/default-book.png';
+import { Link } from "react-router-dom";
+import axios from "axios";
+import defaultBook from "../assets/default-book.png";
 
-function FeaturedBooks() {
+function FeatureBooks() {
+  // 2. HOOK PHẢI NẰM Ở ĐÂY (Bên trong hàm)
+  const [books, setBooks] = useState([]); 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+      axios.get("http://localhost:5555/books")
+      .then((res) => {
+        // Lọc lấy những sách được đánh dấu là isFeatured
+        const allBooks = res.data.data || res.data;
+        const featured = allBooks.filter(b => b.isFeatured === true);
+        setBooks(featured);
+        setLoading(false);
+      }) // <--- PHẢI CÓ DẤU ) Ở ĐÂY ĐỂ ĐÓNG .then
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      }); // <--- ĐÓNG .catch
+    }, []); // <-- ĐÓNG useEffect
+  if (loading) return <div className="text-center py-5">Đang tải...</div>;
+
   return (
     <section className="featured-section">
       <Container>
-        {/* TIÊU ĐỀ PHẦN */}
         <div className="text-center mb-5">
-          <span className="featured-subtitle">SOME QUALITY ITEMS</span>
+          <span className="featured-subtitle">Sản phẩm nổi bật</span>
           <h2 className="featured-title">Featured Books</h2>
         </div>
 
-        {/* DANH SÁCH SÁCH TỪ FILE DATA */}
         <Row>
-          {listBooks.map((book) => (
-            <Col lg={3} md={6} key={book.id}>
-              {/* Bọc Link quanh card để click vào là sang trang chi tiết */}
-              <Link 
-                to={`/book/${book.id}`} 
-                className="text-decoration-none" 
-                style={{ color: 'inherit' }}
-              >
+          {books.map((book) => (
+            <Col lg={3} md={6} key={book._id}>
+              <Link to={`/book/${book._id}`} className="text-decoration-none">
                 <div className="book-card text-center">
                   <div className="book-image-wrapper">
-                    {/* Ảnh lấy từ dữ liệu giả lập */}
-                    <img src={book.image} alt={book.title}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = defaultBook;
-                    }}
-                    style={{ height: "300px", objectFit: "cover" }}
-                  />
-                </div>
+                    <img src={`http://localhost:5555/images/${book.image}`} alt={book.title} onError={(e) => (e.target.src = defaultBook)} />
+                  </div>
                   <h5 className="book-title">{book.title}</h5>
                   <p className="book-author">{book.author}</p>
-                  {/* Định dạng lại giá tiền với dấu $ */}
-                  <p className="book-price">${book.price.toFixed(2)}</p>
                 </div>
               </Link>
             </Col>
           ))}
         </Row>
-
-        {/* NÚT XEM TẤT CẢ */}
         <div className="text-end mt-5">
           <Link to="/products" className="view-all">
             View All Products →
@@ -56,4 +58,4 @@ function FeaturedBooks() {
   );
 }
 
-export default FeaturedBooks;
+export default FeatureBooks;

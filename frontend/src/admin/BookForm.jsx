@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container, Form, Button, Row, Col, Card, Image } from "react-bootstrap";
 import { Camera, Save, XCircle } from "lucide-react"; // Cài lucide-react nếu chưa có
+import axios from "axios";
 
 const BookForm = () => {
   const navigate = useNavigate();
@@ -13,6 +14,20 @@ const BookForm = () => {
     publisher: "", issuedBy: "", pubDate: "", size: "",
     coverType: "", description: "", longDescription: "", image: null
   });
+
+  useEffect(() => {
+  if (id) {
+    fetch(`http://localhost:5555/books/${id}`)
+      .then(res => res.json())
+      .then(res => {
+        setBook(res.data);
+        if (res.data.image) {
+          setPreview(`http://localhost:5555/images/${res.data.image}`);
+        }
+      })
+      .catch(err => console.error(err));
+  }
+}, [id]);
 
   const handleChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
@@ -26,11 +41,28 @@ const BookForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Dữ liệu gửi đi:", book);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+  Object.keys(book).forEach((key) => {
+    if (book[key]) {
+      formData.append(key, book[key]);
+    }
+  });
+
+  try {
+    if (id) {
+      await axios.put(`http://localhost:5555/books/${id}`, formData);
+    } else {
+      await axios.post(`http://localhost:5555/books`, formData);
+    }
     navigate("/admin/books");
-  };
+  } catch (error) {
+    console.error("Lỗi lưu sách:", error);
+  }
+};
+
 
   return (
     <div className="admin-form-container">

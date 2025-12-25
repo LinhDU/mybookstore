@@ -31,7 +31,7 @@ function App() {
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Home />} /> {/* Trang chủ: / */}
           <Route path="products" element={<AllProducts />} /> {/* Trang: /products */}
-          <Route path="book/:id" element={<BookDetail />} /> {/* Trang: /book/1 */}
+          <Route path="detail/:id" element={<BookDetail />} /> {/* Trang: /book/1 */}
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>

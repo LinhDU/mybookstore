@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { TextAlignCenter } from "lucide-react";
 
 function AdminBooks() {
   const [books, setBooks] = useState([]); // Khởi tạo mảng rỗng
@@ -48,8 +49,8 @@ function AdminBooks() {
   return (
     <div className="container-fluid">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3 className="fw-bold">Quản lý kho sách</h3>
-        <button className="btn btn-primary shadow-sm" onClick={() => navigate("/admin/books/add")}>
+        <h3 className="fw-bold">Quản lý sách</h3>
+        <button className="btn-add-admin shadow-sm" onClick={() => navigate("/admin/books/add")}>
           ➕ Thêm sách mới
         </button>
       </div>
@@ -57,11 +58,11 @@ function AdminBooks() {
       <div className="table-responsive">
         <table className="table table-hover table-bordered bg-white shadow-sm">
           <thead className="table-light">
-            <tr>
-              <th style={{ width: "10%" }}>Mã (ID)</th>
+            <tr style={{ textAlign: 'center' }}>
+              <th style={{ width: "15%" }}>Mã (ID)</th>
               <th style={{ width: "45%" }}>Tên sách</th>
               <th style={{ width: "20%" }}>Giá bán</th>
-              <th style={{ width: "25%" }} className="text-center">Thao tác</th>
+              <th style={{ width: "20%" }} className="text-center">Thao tác</th>
             </tr>
           </thead>
           <tbody>
@@ -72,26 +73,27 @@ function AdminBooks() {
             ) : books.length > 0 ? (
               books.map((book) => (
                 <tr key={book._id}>
-                  <td className="text-muted">
+                  <td className="text-muted"  style={{ textAlign: 'center' }}>
                     {book._id ? `${book._id.substring(0, 8)}...` : "N/A"}
                   </td>
                   <td className="fw-bold">{book.title}</td>
-                  <td className="text-danger fw-bold">
+                  <td className="text-danger fw-bold" style={{ textAlign: 'center' }}>
                     {Number(book.price || 0).toLocaleString()} VNĐ
                   </td>
                   <td className="text-center">
                     <button 
-                      className="btn btn-sm btn-warning me-2 px-3"
+                      className="btn-edit-admin me-2"
                       onClick={() => navigate(`/admin/books/edit/${book._id}`)}
                     >
                       Sửa
                     </button>
                     <button 
-                      className="btn btn-sm btn-danger px-3"
-                      onClick={() => handleDelete(book._id)}
-                    >
-                      Xóa
-                    </button>
+                    className="btn-delete-admin"
+                    // SỬA TẠI ĐÂY: đổi book.id thành book._id
+                    onClick={() => handleDelete(book._id)} 
+                  >
+                    Xóa
+                  </button>
                   </td>
                 </tr>
               ))

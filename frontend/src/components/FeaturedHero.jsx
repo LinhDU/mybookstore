@@ -52,19 +52,18 @@ const FeaturedHero = () => {
                 </Col>
 
                 {/* Cột ảnh: Chiếm 6/12 */}
-                <Col lg={6} md={12} className="hero-image-col position-relative">
-                  {/* Hình khối tròn trang trí phía sau */}
-                  <div className="blob-bg"></div>
-                  
-                  {/* Container chứa ảnh sách để đổ bóng */}
-                  <div className="hero-book-wrapper">
-                    <img
-                      className="hero-book-img"
-                      src={slide.image}
-                      alt={slide.title}
-                    />
-                  </div>
-                </Col>
+                <Col lg={6} md={12} className="hero-image-col">
+              {/* Đổi tên từ blob-bg thành frame-bg */}
+              <div className="frame-bg"></div>
+              
+              <div className="hero-book-wrapper">
+                <img
+                  className="hero-book-img"
+                  src={slide.image}
+                  alt={slide.title}
+                />
+              </div>
+            </Col>
 
               </Row>
             </Container>

@@ -10,7 +10,7 @@ const bookSchema = mongoose.Schema({
     //Thông tin bổ sung
     publisher: { type: String },
     issuedBy: { type: String },
-    pubDate: { type: Date },
+    pubDate: { type: Number },
     size: { type: String },
     coverType: { type: String },
     description: { type: String },

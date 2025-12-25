@@ -60,7 +60,7 @@ a {
 }
 
 .booksaw-navbar .nav-link {
-  font-size:1.1rem !important;
+  font-size:1rem !important;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   font-weight: 600;
@@ -71,12 +71,67 @@ a {
   color: var(--color-gold) !important;
 }
 
-footer {
-  background-color: var(--bg-cream-dark);
-  padding: 40px 0;
-  border-top: 1px solid var(--border-color);
-  color: var(--text-muted);
-  text-align: center;
+/* ==========================================================================
+   FOOTER STYLE (FAHASA + NEVERLAND)
+   ========================================================================== */
+
+.footer-fahasa-style {
+  background-color: #ffffff; /* Nền trắng sạch sẽ như mẫu */
+  border-top: 1px solid #e6dfd6;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: #333;
+}
+
+/* Cột Logo có gạch dọc bên phải (chỉ hiện trên màn hình lớn) */
+@media (min-width: 992px) {
+  .footer-brand-section {
+    border-right: 1px solid #eee;
+  }
+}
+
+.footer-info-text p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Tiêu đề các cột (DỊCH VỤ, HỖ TRỢ...) */
+.footer-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Link trong Footer */
+.footer-links-col ul li {
+  margin-bottom: 12px;
+}
+
+.footer-links-col ul li a {
+  font-size: 0.9rem;
+  color: #444 !important;
+  text-decoration: none !important;
+  transition: 0.2s ease;
+}
+
+.footer-links-col ul li a:hover {
+  color: #b38b59 !important; /* Màu vàng đồng thương hiệu khi hover */
+  padding-left: 5px; /* Hiệu ứng dịch nhẹ khi hover */
+}
+
+/* Responsive cho mobile */
+@media (max-width: 767px) {
+  .footer-brand-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .footer-heading {
+    margin-top: 20px;
+  }
 }
 
 /* ==========================================================================
@@ -128,14 +183,20 @@ footer {
 
 /* Ảnh Hero & Blob */
 .hero-book-wrapper {
-  position: relative;
-  z-index: 10;
-  filter: drop-shadow(20px 20px 50px rgba(0,0,0,0.15));
+  position: relative !important;
+  z-index: 10 !important;
+  filter: drop-shadow(15px 15px 25px rgba(0,0,0,0.2));
 }
-
+.hero-image-col {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+  min-height: 600px; /* Tăng nhẹ chiều cao để khung ảnh không bị gò bó */
+}
 .hero-book-img {
-  max-height: 500px;
-  width: auto;
+  max-height: 520px !important; 
+  width: auto !important;
   display: block;
 }
 
@@ -148,6 +209,40 @@ footer {
   border-radius: 50%;
   z-index: 1;
 }
+.frame-bg {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; 
+  
+  /* Kích thước khung (nên to hơn ảnh sách một chút) */
+  width: 420px !important; 
+  height: 580px !important;
+  
+  background-color: #e9e7df; /* Màu kem nhạt */
+  
+  /* ĐỔI TỪ 50% SANG BO GÓC NHẸ HOẶC VUÔNG VỨC */
+  border-radius: 4px !important; /* Bo góc nhẹ cho tinh tế, hoặc 0 nếu muốn vuông hẳn */
+  
+  /* THÊM VIỀN ĐỂ GIỐNG KHUNG ẢNH */
+  border: 1px solid #d1cfc7; 
+  
+  z-index: 1;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Hiệu ứng trang trí thêm cho khung (tùy chọn) */
+.frame-bg::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  pointer-events: none;
+}
+
 
 /* Featured Books Grid */
 .featured-section { padding: 100px 0; }
@@ -195,6 +290,70 @@ footer {
 /* ==========================================================================
    4. TRANG CHI TIẾT SÁCH (BOOK DETAIL)
    ========================================================================== */
+/* --- BOOK DETAIL PAGE --- */
+.book-detail-page {
+  background-color: #fdfaf6;
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.main-book-img {
+  max-height: 550px;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.detail-book-title {
+  font-family: 'Lora', serif; /* Dùng font có chân cho tiêu đề sang trọng */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2f2f2f;
+  margin-bottom: 10px;
+}
+
+.detail-author {
+  font-size: 1.1rem;
+  color: #888;
+}
+.detail-author span { color: #b38b59; font-weight: 600; }
+
+.detail-price {
+  color: #b38b59;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+.detail-short-desc {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+/* Nút bấm */
+.btn-add-to-cart {
+  background-color: #b38b59;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+.btn-add-to-cart:hover { background-color: #967325; transform: translateY(-2px); }
+
+.btn-wishlist {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+/* Tabs */
+.custom-detail-tabs {
+  border-bottom: 2px solid #eee !important;
+  justify-content: center;
+}
 .custom-detail-tabs .nav-link {
   font-weight: 700;
   color: #999 !important;
@@ -203,39 +362,44 @@ footer {
   text-transform: uppercase;
 }
 .custom-detail-tabs .nav-link.active {
-  color: var(--text-main) !important;
-  border-bottom: 3px solid var(--text-main) !important;
+  color: #2f2f2f !important;
+  border-bottom: 3px solid #b38b59 !important;
   background: transparent !important;
 }
 
-.detail-content.collapsed {
+.block-subtitle {
+  font-weight: 800;
+  font-size: 0.9rem;
+  font-style: normal;
+  color: #2f2f2f;
+  margin-bottom: 20px;
+}
+
+.detail-specs { list-style: none; padding: 0; }
+.detail-specs li { margin-bottom: 10px; font-size: 0.95rem; }
+.detail-specs li span { display: inline-block; width: 180px; color: #888; }
+
+/* Logic Rút gọn / Xem thêm */
+.tab-content-container.collapsed {
   max-height: 400px;
   overflow: hidden;
   position: relative;
 }
-.detail-content.collapsed::after {
-  content: ""; 
-  position: absolute; 
-  bottom: 0; 
-  left: 0; 
-  width: 100%; 
+.tab-content-container.collapsed::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   height: 100px;
-  background: linear-gradient(transparent, #fff);
+  background: linear-gradient(transparent, #fff); /* Hiệu ứng mờ đáy */
 }
-.quote-text{
-  font-style: italic;
-}
-.btn-toggle-view, 
-.btn-read-more,
+
 .btn-toggle-content {
-    border: none;        
-    background: transparent; 
-    outline: none;       
-    box-shadow: none;    
-    padding: 0;                     
-    cursor: pointer;        
-    color:#2f2f2f;                 
-    font-weight: 700;
+  color: #b38b59;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 /*Admin*/
 
@@ -450,4 +614,59 @@ footer {
 .admin-link.active { 
   background-color: #b38b59 !important; 
   color: #fff !important; 
+}
+/* --- CUSTOM ADMIN BUTTONS --- */
+
+.btn-edit-admin {
+  background-color: #b38b59 !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 6px 15px !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-edit-admin:hover {
+  background-color: #F5E8B7 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(179, 139, 89, 0.3);
+}
+
+.btn-delete-admin {
+  background-color: #2f2f2f !important; 
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 6px 15px !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-delete-admin:hover {
+  background-color: #dc3545 !important; 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+/* --- NÚT THÊM SÁCH MỚI (Màu vàng đồng) --- */
+.btn-add-admin {
+  background-color: #b38b59 !important; /* Màu Gold Neverland */
+  color: white !important;
+  border: none !important;
+  padding: 10px 25px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-add-admin:hover {
+  background-color: #F5E8B7!important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(179, 139, 89, 0.3);
 }

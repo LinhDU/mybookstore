@@ -31,17 +31,21 @@ router.get('/', async (req, res) => {
 
 // 2. Lấy 1 cuốn sách theo ID (GET http://localhost:5555/books/:id)
 // backend/routes/booksRoute.js
-router.get('/', async (req, res) => {
-    try {
-        const books = await Book.find({});
-        // Trả về object có thuộc tính data để khớp với logic Frontend
-        return res.status(200).json({
-            count: books.length,
-            data: books
-        });
-    } catch (error) {
-        res.status(500).send({ message: error.message });
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params; // Lấy ID từ thanh địa chỉ
+    const book = await Book.findById(id); // Tìm đúng cuốn đó trong DB
+
+    if (!book) {
+      return res.status(404).json({ message: 'Không tìm thấy sách' });
     }
+
+    // Trả về trực tiếp object book để Frontend dễ xử lý
+    return res.status(200).json(book);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send({ message: error.message });
+  }
 });
 
 // 3. Thêm sách mới có kèm ảnh (POST http://localhost:5555/books)

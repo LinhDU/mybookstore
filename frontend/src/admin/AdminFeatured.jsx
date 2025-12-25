@@ -30,8 +30,8 @@ const AdminFeatured = () => {
           <thead>
             <tr>
               <th>Tên sách</th>
-              <th className="text-center">Hiện Banner (Hero)</th>
-              <th className="text-center">Mục Nổi bật (Featured)</th>
+              <th className="text-center">Banner</th>
+              <th className="text-center">Sách nổi bật</th>
             </tr>
           </thead>
           <tbody>

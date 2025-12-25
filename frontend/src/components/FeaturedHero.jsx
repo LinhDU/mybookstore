@@ -15,7 +15,6 @@ const FeaturedHero = () => {
     axios.get('http://localhost:5555/books')
       .then((res) => {
         const allBooks = res.data.data || res.data;
-        // Chỉ lấy những cuốn được Admin tích chọn "isHero"
         const filtered = allBooks.filter(book => book.isHero === true);
         setHeroBooks(filtered);
         setLoading(false);
@@ -35,9 +34,8 @@ const FeaturedHero = () => {
     );
   }
 
-  // Nếu không có cuốn sách nào được chọn làm Hero, hiển thị thông báo hoặc slide mặc định
   if (heroBooks.length === 0) {
-    return null; // Hoặc bạn có thể để một slide mặc định ở đây
+    return null; 
   }
 
   return (
@@ -45,7 +43,6 @@ const FeaturedHero = () => {
       <Carousel 
         indicators={true} 
         interval={5000}
-        fade={true} 
         nextIcon={<div className="nav-circle shadow-sm"><ArrowRight size={22} /></div>}
         prevIcon={<div className="nav-circle shadow-sm"><ArrowLeft size={22} /></div>}
       >

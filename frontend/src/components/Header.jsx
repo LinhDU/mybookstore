@@ -25,7 +25,6 @@ function Header() {
             <Nav.Link href="http://localhost:5173/#">Trang chủ</Nav.Link>
             <Nav.Link href="#">Danh mục</Nav.Link>
             <Nav.Link href="#">Sách mới</Nav.Link>
-            <Nav.Link href="#">Khuyến mãi</Nav.Link>
             <NavDropdown title="Thể loại">
               <NavDropdown.Item>Văn học</NavDropdown.Item>
               <NavDropdown.Item>Kỹ năng</NavDropdown.Item>

@@ -263,7 +263,7 @@ a {
   transition: 0.3s;
 }
 .book-image-wrapper img { 
-    max-width: 100% !important;
+  max-width: 100% !important;
   max-height: 100% !important;
   width: auto !important;
   height: auto !important;
@@ -355,7 +355,7 @@ a {
   letter-spacing: 1px;
   transition: 0.3s;
 }
-.btn-add-to-cart:hover { background-color: #967325; transform: translateY(-2px); }
+.btn-add-to-cart:hover { background-color: #a58a4d; transform: translateY(-2px); }
 
 .btn-wishlist {
   background: white;

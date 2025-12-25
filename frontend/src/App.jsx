@@ -30,9 +30,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<UserLayout />}>
-          <Route index element={<Home />} /> {/* Trang chủ: / */}
-          <Route path="products" element={<AllProducts />} /> {/* Trang: /products */}
-          <Route path="detail/:id" element={<BookDetail />} /> {/* Trang: /book/1 */}
+          <Route index element={<Home />} /> 
+          <Route path="products" element={<AllProducts />} /> 
+          <Route path="book/:id" element={<BookDetail />} />  
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>

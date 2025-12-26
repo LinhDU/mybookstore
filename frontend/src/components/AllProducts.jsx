@@ -30,8 +30,7 @@ const AllProducts = () => {
       <Container>
         {/* TIÊU ĐỀ ĐỒNG BỘ TRANG CHỦ */}
         <div className="text-center mb-5">
-          <span className="featured-subtitle">KHÁM PHÁ KHO SÁCH</span>
-          <h2 className="featured-title">Tất Cả Sản Phẩm</h2>
+          <h2 className="featured-title">TẤT CẢ SẢN PHẨM</h2>
         </div>
 
         {loading ? (

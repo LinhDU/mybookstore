@@ -35,7 +35,7 @@ function Header() {
           {/* MENU */}
           <Nav className="mx-auto fs-5">
             <Nav.Link as={Link} to="/">Trang chủ</Nav.Link>
-            <Nav.Link href="#">Danh mục</Nav.Link>
+            <Nav.Link href="http://localhost:5173/products">Kho sách</Nav.Link>
             <Nav.Link href="#">Sách mới</Nav.Link>
             <NavDropdown title="Thể loại">
               <NavDropdown.Item>Văn học</NavDropdown.Item>

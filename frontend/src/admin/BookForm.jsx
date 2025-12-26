@@ -179,7 +179,7 @@ const BookForm = () => {
                     </Col>
                     <Col md={6}>
                       <Form.Group>
-                        <Form.Label>Năm phát hành</Form.Label>
+                        <Form.Label>Năm xuất bản</Form.Label>
                         <Form.Control 
                           type="number" 
                           name="pubDate" 

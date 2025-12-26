@@ -13,6 +13,8 @@ import AdminBooks from "./admin/AdminBooks";
 import BookForm from "./admin/BookForm";
 import AdminFeatured from "./admin/AdminFeatured";
 
+import SearchResult from "./pages/SearchResult"; /*T*/
+
 const UserLayout = () => {
   return (
     <>
@@ -33,6 +35,7 @@ function App() {
           <Route index element={<Home />} /> 
           <Route path="products" element={<AllProducts />} /> 
           <Route path="book/:id" element={<BookDetail />} />  
+          <Route path="search" element={<SearchResult />} /> /*T*/
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>

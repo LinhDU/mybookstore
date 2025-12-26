@@ -237,7 +237,7 @@ a {
 
 .featured-section { padding: 100px 0; }
 .featured-subtitle {
-  font-size: 0.75rem;
+  font-size: 1rem;
   letter-spacing: 3px;
   color: #999;
   text-transform: uppercase;
@@ -342,8 +342,14 @@ a {
   color: #555;
   line-height: 1.8;
   font-size: 1rem;
+  white-space: pre-line; 
 }
-
+.long-description-text {
+  color: #444;
+  line-height: 1.8;
+  font-size: 1rem;
+  white-space: pre-line; 
+}
 /* Nút bấm */
 .btn-add-to-cart {
   background-color: #b38b59;
@@ -396,7 +402,7 @@ a {
 
 /* Logic Rút gọn / Xem thêm */
 .tab-content-container.collapsed {
-  max-height: 400px;
+  max-height: 300px;
   overflow: hidden;
   position: relative;
 }

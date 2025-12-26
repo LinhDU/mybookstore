@@ -6,9 +6,8 @@ import booksRoute from './routes/booksRoute.js';
 
 const app = express();
 
-// Middleware
 app.use(express.json());
-app.use(cors()); // Rất quan trọng để Vite gọi được API
+app.use(cors()); 
 
 // Phục vụ ảnh để Frontend có thể truy cập qua URL: http://localhost:5555/images/ten-anh.jpg
 app.use('/images', express.static('public/images'));

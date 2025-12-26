@@ -1,29 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import defaultBook from "../assets/default-book.png";
 
 const AllProducts = () => {
-  // 1. Luôn khởi tạo là mảng rỗng
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0); // Cuộn lên đầu trang khi vào
+    setLoading(true);
     axios
       .get("http://localhost:5555/books")
       .then((res) => {
-        // 2. Kiểm tra dữ liệu cực kỳ cẩn thận trước khi setBooks
-        if (res.data && res.data.data) {
-          // Trường hợp Backend trả về { data: [...] }
-          setBooks(res.data.data);
-        } else if (Array.isArray(res.data)) {
-          // Trường hợp Backend trả về mảng trực tiếp [...]
-          setBooks(res.data);
-        } else {
-
-          setBooks([]);
-        }
+        const data = res.data.data || res.data;
+        setBooks(Array.isArray(data) ? data : []);
         setLoading(false);
       })
       .catch((err) => {
@@ -34,53 +26,55 @@ const AllProducts = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#f8f6f1", minHeight: "100vh" }}>
-      <div className="container py-5">
-        <h2 className="text-center mb-5">Tất cả sản phẩm</h2>
-        <div className="row g-4">
-          {loading ? (
-            <div className="text-center">Đang tải danh sách sách...</div>
-          ) : (books && books.length > 0) ? ( 
-            books.map((book) => (
-              <div className="col-lg-3 col-md-4 col-sm-6" key={book._id}>
-                <div
-                  className="card h-100 border-0 shadow-sm text-center"
-                  style={{ cursor: "pointer", transition: "0.3s" }}
-                  onClick={() => navigate(`/book/${book._id}`)}
-                >
-                  <div style={{ backgroundColor: "#f1efe9", padding: "20px" }}>
-                    <img
-                      src={
-                        book.image
-                          ? `http://localhost:5555/images/${book.image}`
-                          : defaultBook
-                      }
-                      alt={book.title}
-                      onError={(e) => (e.target.src = defaultBook)}
-                      style={{
-                        width: "100%",
-                        height: "250px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
+    <section className="featured-section all-products-page">
+      <Container>
+        {/* TIÊU ĐỀ ĐỒNG BỘ TRANG CHỦ */}
+        <div className="text-center mb-5">
+          <span className="featured-subtitle">KHÁM PHÁ KHO SÁCH</span>
+          <h2 className="featured-title">Tất Cả Sản Phẩm</h2>
+        </div>
 
-                  <div className="card-body">
-                    <h5 className="fw-bold mt-2 text-truncate">{book.title}</h5>
-                    <p className="text-muted mb-1">{book.author}</p>
+        {loading ? (
+          <div className="text-center py-5">
+            <Spinner animation="border" variant="warning" />
+            <p className="mt-3 text-muted">Đang tải danh sách sách...</p>
+          </div>
+        ) : books.length > 0 ? (
+          <Row className="g-4">
+            {books.map((book) => (
+              <Col lg={3} md={4} sm={6} key={book._id} className="mb-4">
+                {/* Dùng thẻ Link với class book-card-link để xóa gạch chân xanh */}
+                <Link to={`/book/${book._id}`} className="book-card-link">
+                  <div className="book-card text-center">
+                    <div className="book-image-wrapper">
+                      <img
+                        src={
+                          book.image
+                            ? `http://localhost:5555/images/${book.image}`
+                            : defaultBook
+                        }
+                        alt={book.title}
+                        onError={(e) => (e.target.src = defaultBook)}
+                      />
+                    </div>
+                    
+                    <h5 className="book-title">{book.title}</h5>
+                    <p className="book-author">{book.author}</p>
                     <p className="fw-bold text-danger">
                       {book.price ? Number(book.price).toLocaleString() : 0} VNĐ
                     </p>
                   </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="text-center text-muted">Không tìm thấy sản phẩm nào.</div>
-          )}
-        </div>
-      </div>
-    </div>
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <div className="text-center py-5 text-muted">
+            Hiện chưa có sản phẩm nào trong cửa hàng.
+          </div>
+        )}
+      </Container>
+    </section>
   );
 };
 

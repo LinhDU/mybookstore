@@ -704,3 +704,16 @@ a {
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   border-radius: 15px;
 }
+/*Search Result Page*/
+/* Xóa định dạng mặc định cho tất cả các liên kết bọc card sách */
+.book-card-link, 
+.book-card-link:hover {
+  text-decoration: none !important; /* Xóa gạch chân */
+  color: inherit !important;        /* Lấy màu chữ mặc định của thẻ cha (đen/xám) */
+  display: block;                   /* Đảm bảo vùng click bao phủ toàn bộ card */
+}
+
+/* Nếu bạn muốn khi di chuột vào (hover) mới hiện gạch chân hoặc đổi màu nhẹ */
+.book-card-link:hover .book-title {
+  color: #b38b59 !important; /* Ví dụ: đổi tên sách sang màu vàng đồng khi hover */
+}

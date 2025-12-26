@@ -29,8 +29,7 @@ function FeatureBooks() {
     <section className="featured-section">
       <Container>
         <div className="text-center mb-5">
-          <span className="featured-subtitle">Sản phẩm nổi bật</span>
-          <h2 className="featured-title">Featured Books</h2>
+          <h2 className="featured-subtitle">Sản phẩm nổi bật</h2>
         </div>
 
         <Row>

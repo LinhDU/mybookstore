@@ -46,7 +46,7 @@ const AllProducts = () => {
                 <div
                   className="card h-100 border-0 shadow-sm text-center"
                   style={{ cursor: "pointer", transition: "0.3s" }}
-                  onClick={() => navigate(`/detail/${book._id}`)}
+                  onClick={() => navigate(`/book/${book._id}`)}
                 >
                   <div style={{ backgroundColor: "#f1efe9", padding: "20px" }}>
                     <img

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Tabs, Tab, Row, Col, Spinner } from 'react-bootstrap';
 import { ChevronUp, ChevronDown, ShoppingCart, BookOpen } from 'lucide-react';
+import defaultBook from '../assets/default-book.png'; 
 
 const BookDetail = () => {
   const { id } = useParams(); // Lấy ID từ URL
@@ -50,6 +51,7 @@ const BookDetail = () => {
                   src={`http://localhost:5555/images/${book.image}`} 
                   alt={book.title} 
                   className="img-fluid shadow-lg main-book-img"
+                  onError={(e) => (e.target.src = defaultBook)}
                 />
               </div>
             </Col>
@@ -105,7 +107,6 @@ const BookDetail = () => {
                   </ul>
                 </div>
 
-                {/* 2. Nội dung dài */}
                 <div className="info-block">
                   <h6 className="block-subtitle">NỘI DUNG</h6>
                   <div className="long-description-text">

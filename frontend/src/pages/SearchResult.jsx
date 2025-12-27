@@ -34,7 +34,7 @@ function SearchResult() {
   }, [keyword]);
 
   return (
-  <section className="featured-section">
+  <section className="featured-section all-products-page">
     <Container>
       {/* 1. Nếu đang tải: Chỉ hiện Spinner */}
       {loading ? (
@@ -60,7 +60,6 @@ function SearchResult() {
             <Row>
               {books.map(book => (
                 <Col lg={3} md={6} key={book._id} className="mb-5">
-                   {/* Nội dung Card sách của bạn... */}
                    <Link to={`/book/${book._id}`} className="book-card-link">
                       <div className="book-card text-center">
                         <div className="book-image-wrapper">

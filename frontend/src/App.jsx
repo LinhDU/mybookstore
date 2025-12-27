@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import FavoritesPage from './components/FavoritesPage';
+import { FavoritesProvider } from "./components/FavoritesContext";
 
 import MyNavbar from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,6 +17,7 @@ import AdminFeatured from "./admin/AdminFeatured";
 
 import SearchResult from "./pages/SearchResult"; /*T*/
 
+
 const UserLayout = () => {
   return (
     <>
@@ -29,13 +32,15 @@ const UserLayout = () => {
 
 function App() {
   return (
+     <FavoritesProvider>
     <Router>
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route index element={<Home />} /> 
           <Route path="products" element={<AllProducts />} /> 
           <Route path="book/:id" element={<BookDetail />} />  
-          <Route path="search" element={<SearchResult />} /> /*T*/
+          <Route path="search" element={<SearchResult />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>
@@ -46,6 +51,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </FavoritesProvider>
   );
 }
 

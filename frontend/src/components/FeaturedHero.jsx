@@ -51,7 +51,6 @@ const FeaturedHero = () => {
             <Container>
               <Row className="align-items-center" style={{ minHeight: '80vh' }}>
                 
-                {/* CỘT TRÁI: THÔNG TIN SÁCH */}
                 <Col lg={5} md={12} className="hero-text-col offset-lg-1">
                   <h1 className="hero-title">
                     {book.title}
@@ -66,12 +65,8 @@ const FeaturedHero = () => {
                   </div>
                 </Col>
 
-                {/* CỘT PHẢI: ẢNH SÁCH VÀ KHUNG HÌNH CHỮ NHẬT */}
                 <Col lg={6} md={12} className="hero-image-col position-relative">
-                  {/* Khung hình chữ nhật phía sau */}
                   <div className="frame-bg"></div>
-                  
-                  {/* Ảnh sách */}
                   <div className="hero-book-wrapper">
                     <img
                       className="hero-book-img"
@@ -80,6 +75,7 @@ const FeaturedHero = () => {
                       onError={(e) => (e.target.src = defaultBook)}
                     />
                   </div>
+                  
                 </Col>
 
               </Row>

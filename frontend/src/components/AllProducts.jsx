@@ -9,7 +9,7 @@ const AllProducts = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Cuộn lên đầu trang khi vào
+    window.scrollTo(0, 0);
     setLoading(true);
     axios
       .get("http://localhost:5555/books")

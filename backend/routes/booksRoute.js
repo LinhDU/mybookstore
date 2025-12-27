@@ -19,29 +19,37 @@ const upload = multer({ storage });
 // 1. Lấy tất cả sách (GET http://localhost:5555/books)
 router.get('/', async (req, res) => {
   try {
-    console.log('QUERY:', req.query);
-    const { q } = req.query;
-
+    const { q, category } = req.query;
     let filter = {};
 
-    if (q && q.trim() !== '') {
-      filter = {
-        title: { $regex: q.trim(), $options: 'i' }
-      };
+    // Tìm kiếm theo từ khóa
+    if (q && q.trim() !== "") {
+      filter.$or = [
+        { title: { $regex: q.trim(), $options: 'i' } },
+        { author: { $regex: q.trim(), $options: 'i' } }
+      ];
     }
 
-    console.log('FILTER:', filter);
+    // Lọc theo thể loại
+    if (category && category.trim() !== "") {
+      filter.category = category;
+    }
+
+    console.log("QUERY:", req.query);
+    console.log("FILTER:", filter);
 
     const books = await Book.find(filter);
 
     return res.status(200).json({
-      count: books.length,
-      data: books
+      data: books,
+      count: books.length
     });
   } catch (error) {
-    res.status(500).send({ message: error.message });
+    console.error("BOOKS ERROR:", error);
+    return res.status(500).json({ message: error.message });
   }
 });
+
 
 
 
@@ -119,4 +127,6 @@ router.patch('/status/:id', async (req, res) => {
     res.status(500).send({ message: error.message });
   }
 });
+
+
 export default router;

@@ -15,6 +15,8 @@ import AdminFeatured from "./admin/AdminFeatured";
 
 import SearchResult from "./pages/SearchResult"; /*T*/
 
+import CategoryPage from "./pages/CategoryPage";
+
 const UserLayout = () => {
   return (
     <>
@@ -36,6 +38,7 @@ function App() {
           <Route path="products" element={<AllProducts />} /> 
           <Route path="book/:id" element={<BookDetail />} />  
           <Route path="search" element={<SearchResult />} /> /*T*/
+          <Route path="category/:category" element={<CategoryPage />} />
         </Route>
 
         <Route path="/admin" element={<AdminLayout />}>

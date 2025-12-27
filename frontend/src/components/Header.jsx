@@ -38,9 +38,15 @@ function Header() {
             <Nav.Link href="#">Danh mục</Nav.Link>
             <Nav.Link href="#">Sách mới</Nav.Link>
             <NavDropdown title="Thể loại">
-              <NavDropdown.Item>Văn học</NavDropdown.Item>
-              <NavDropdown.Item>Kỹ năng</NavDropdown.Item>
-              <NavDropdown.Item>Công nghệ</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/van-hoc">
+                Văn học
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/ky-nang">
+                Kỹ năng
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/cong-nghe">
+                Công nghệ
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
 
@@ -54,6 +60,7 @@ function Header() {
               onKeyDown={handleSearch}
               style={{ width: "220px" }}
             />
+
 
             <Button variant="outline-dark">
               <FaShoppingCart size={20} />

@@ -5,24 +5,22 @@ import axios from "axios";
 import defaultBook from "../assets/default-book.png";
 
 function FeatureBooks() {
-  // 2. HOOK PHẢI NẰM Ở ĐÂY (Bên trong hàm)
   const [books, setBooks] = useState([]); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
       axios.get("http://localhost:5555/books")
       .then((res) => {
-        // Lọc lấy những sách được đánh dấu là isFeatured
         const allBooks = res.data.data || res.data;
         const featured = allBooks.filter(b => b.isFeatured === true);
         setBooks(featured);
         setLoading(false);
-      }) // <--- PHẢI CÓ DẤU ) Ở ĐÂY ĐỂ ĐÓNG .then
+      })
       .catch((err) => {
         console.error(err);
         setLoading(false);
-      }); // <--- ĐÓNG .catch
-    }, []); // <-- ĐÓNG useEffect
+      }); 
+    }, []);
   if (loading) return <div className="text-center py-5">Đang tải...</div>;
 
   return (
@@ -49,7 +47,7 @@ function FeatureBooks() {
         </Row>
         <div className="text-end mt-5">
           <Link to="/products" className="view-all">
-            View All Products →
+            Xem tất cả →
           </Link>
         </div>
       </Container>

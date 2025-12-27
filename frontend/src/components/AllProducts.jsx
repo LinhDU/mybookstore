@@ -9,7 +9,7 @@ const AllProducts = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Cuộn lên đầu trang khi vào
+    window.scrollTo(0, 0);
     setLoading(true);
     axios
       .get("http://localhost:5555/books")
@@ -28,11 +28,6 @@ const AllProducts = () => {
   return (
     <section className="featured-section all-products-page">
       <Container>
-        {/* TIÊU ĐỀ ĐỒNG BỘ TRANG CHỦ */}
-        <div className="text-center mb-5">
-          <span className="featured-subtitle">KHÁM PHÁ KHO SÁCH</span>
-          <h2 className="featured-title">Tất Cả Sản Phẩm</h2>
-        </div>
 
         {loading ? (
           <div className="text-center py-5">

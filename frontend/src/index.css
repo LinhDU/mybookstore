@@ -1,21 +1,18 @@
 
 :root {
-  /* Bảng màu Neverland */
-  --bg-cream-light: #fdfaf6;   /* Nền trang chủ chính */
-  --bg-cream-dark: #f7f2ec;    /* Nền Navbar & Sidebar Admin */
-  --color-gold: #b38b59;       /* Màu vàng đồng nhấn (Accent) */
+  --bg-cream-light: #fdfaf6;
+  --bg-cream-dark: #f7f2ec;    
+  --color-gold: #b38b59;      
   --color-gold-dark: #967325;
   --text-main: #2f2f2f;
   --text-muted: #777777;
   --border-color: #e6dfd6;
   
-  /* Font chữ */
   --font-be: 'Be Vietnam Pro', sans-serif;
   --font-lora: 'Lora', serif;
   --font-serif: 'Playfair Display', serif;
 }
 
-/* RESET CƠ BẢN */
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +30,7 @@ html, body {
 
 #root {
   min-height: 100vh;
-  display: block; /* Sửa lỗi Vite flex center */
+  display: block;
 }
 
 a {
@@ -41,11 +38,9 @@ a {
   transition: 0.3s;
 }
 
-/* ==========================================================================
-   2. NAVBAR & FOOTER (USER)
-   ========================================================================== */
+/*NAVBAR & FOOTER (USER)*/
 .booksaw-navbar {
-  background-color: var(--bg-cream-dark) !important;
+  background-color: #e1d9d2 !important;
   border-bottom: 1px solid var(--border-color);
   padding: 15px 0;
 }
@@ -69,18 +64,15 @@ a {
   color: var(--color-gold) !important;
 }
 
-/* ==========================================================================
-   FOOTER STYLE (FAHASA + NEVERLAND)
-   ========================================================================== */
+/* FOOTER STYLE= */
 
 .footer-fahasa-style {
-  background-color: #ffffff; /* Nền trắng sạch sẽ như mẫu */
+  background-color: #ffffff; 
   border-top: 1px solid #e6dfd6;
   font-family: 'Be Vietnam Pro', sans-serif;
   color: #333;
 }
 
-/* Cột Logo có gạch dọc bên phải (chỉ hiện trên màn hình lớn) */
 @media (min-width: 992px) {
   .footer-brand-section {
     border-right: 1px solid #eee;
@@ -94,7 +86,6 @@ a {
   color: #555;
 }
 
-/* Tiêu đề các cột (DỊCH VỤ, HỖ TRỢ...) */
 .footer-heading {
   font-size: 1rem;
   font-weight: 700;
@@ -104,7 +95,6 @@ a {
   letter-spacing: 0.5px;
 }
 
-/* Link trong Footer */
 .footer-links-col ul li {
   margin-bottom: 12px;
 }
@@ -117,8 +107,8 @@ a {
 }
 
 .footer-links-col ul li a:hover {
-  color: #b38b59 !important; /* Màu vàng đồng thương hiệu khi hover */
-  padding-left: 5px; /* Hiệu ứng dịch nhẹ khi hover */
+  color: #b38b59 !important;
+  padding-left: 5px;
 }
 
 /* Responsive cho mobile */
@@ -132,9 +122,7 @@ a {
   }
 }
 
-/* ==========================================================================
-   3. TRANG CHỦ (HERO & FEATURED BOOKS)
-   ========================================================================== */
+/*HERO & FEATURED BOOKS*/
 
 /* Hero Section */
 #billboard {
@@ -369,6 +357,28 @@ a {
   padding: 10px 15px;
   border-radius: 4px;
 }
+.btn-wishlist-custom {
+  background: white;
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-wishlist-custom.active {
+  background-color: #fff5f5;
+  transform: scale(1.1);
+}
+
+.btn-wishlist-custom:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
 /* Tabs */
 .custom-detail-tabs {
@@ -578,7 +588,6 @@ a {
   z-index: 1000;
 }
 
-/* PHẦN NỘI DUNG BÊN PHẢI */
 .admin-main-content {
   flex: 1 !important;
   display: flex !important;
@@ -705,15 +714,13 @@ a {
   border-radius: 15px;
 }
 /*Search Result Page*/
-/* Xóa định dạng mặc định cho tất cả các liên kết bọc card sách */
 .book-card-link, 
 .book-card-link:hover {
-  text-decoration: none !important; /* Xóa gạch chân */
-  color: inherit !important;        /* Lấy màu chữ mặc định của thẻ cha (đen/xám) */
-  display: block;                   /* Đảm bảo vùng click bao phủ toàn bộ card */
+  text-decoration: none !important; 
+  color: inherit !important;        
+  display: block;                
 }
 
-/* Nếu bạn muốn khi di chuột vào (hover) mới hiện gạch chân hoặc đổi màu nhẹ */
 .book-card-link:hover .book-title {
-  color: #b38b59 !important; /* Ví dụ: đổi tên sách sang màu vàng đồng khi hover */
+  color: #b38b59 !important; 
 }

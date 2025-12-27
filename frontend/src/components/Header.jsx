@@ -39,14 +39,17 @@ function Header() {
             <Nav.Link as={Link} to="/new-books">Sách mới</Nav.Link>
             <Nav.Link as={Link} to="/favorites">Sách yêu thích</Nav.Link>
             <NavDropdown title="Thể loại">
-              <NavDropdown.Item as={Link} to="/category/van-hoc">
-                Văn học
+              <NavDropdown.Item as={Link} to="/category/Tiểu thuyết">
+                Tiểu thuyết
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/category/ky-nang">
-                Kỹ năng
+              <NavDropdown.Item as={Link} to="/category/Hồi Ký - Tuỳ Bút">
+                Hồi Ký - Tuỳ Bút
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/category/cong-nghe">
-                Công nghệ
+              <NavDropdown.Item as={Link} to="/category/Ngôn tình">
+                Ngôn tình
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/category/Ngôn tình - Trinh thám">
+                Ngôn tình - Trinh thám
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

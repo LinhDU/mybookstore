@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
 
     // Lọc theo thể loại
     if (category && category.trim() !== "") {
-      filter.category = category;
+      filter.category = category.trim();
     }
 
     console.log("QUERY:", req.query);

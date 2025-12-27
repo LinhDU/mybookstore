@@ -28,10 +28,6 @@ const AllProducts = () => {
   return (
     <section className="featured-section all-products-page">
       <Container>
-        {/* TIÊU ĐỀ ĐỒNG BỘ TRANG CHỦ */}
-        <div className="text-center mb-5">
-          <h2 className="featured-title">TẤT CẢ SẢN PHẨM</h2>
-        </div>
 
         {loading ? (
           <div className="text-center py-5">

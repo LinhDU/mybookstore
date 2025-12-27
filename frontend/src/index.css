@@ -45,7 +45,7 @@ a {
    2. NAVBAR & FOOTER (USER)
    ========================================================================== */
 .booksaw-navbar {
-  background-color: var(--bg-cream-dark) !important;
+  background-color: #e1d9d2 !important;
   border-bottom: 1px solid var(--border-color);
   padding: 15px 0;
 }

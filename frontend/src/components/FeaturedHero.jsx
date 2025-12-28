@@ -60,7 +60,7 @@ const FeaturedHero = () => {
                   </p>
                   <div className="btn-wrap">
                     <Link to={`/book/${book._id}`} className="hero-btn">
-                      READ MORE <MoveRight className="ms-2" size={18} />
+                      XEM THÊM <MoveRight className="ms-2" size={18} />
                     </Link>
                   </div>
                 </Col>

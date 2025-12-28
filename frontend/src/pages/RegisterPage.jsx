@@ -100,13 +100,13 @@ export default function RegisterPage() {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+                <button type="submit" className="btn btn-primary w-100 btn-add-admin" disabled={loading}>
                   {loading ? 'Đang xử lý...' : 'Đăng ký'}
                 </button>
               </form>
 
               <p className="text-center mt-3">
-                Bạn đã có tài khoản? <Link to="/login">Đăng nhập ngay</Link>
+                Bạn đã có tài khoản? <Link to="/login" className="card-link">Đăng nhập ngay</Link>
               </p>
 
             </div>

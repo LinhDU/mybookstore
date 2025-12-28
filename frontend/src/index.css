@@ -159,12 +159,14 @@ a {
   color: var(--color-gold);
   font-weight: 700;
   text-transform: uppercase;
+  text-decoration: none;
   background: transparent;
 }
 
 .hero-btn:hover {
   background-color: var(--color-gold);
   color: white;
+  text-decoration:underline;
 }
 
 /* Ảnh Hero & Blob */

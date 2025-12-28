@@ -5,17 +5,12 @@ import { PORT, mongoDBUrl } from './config.js';
 import booksRoute from './routes/booksRoute.js';
 
 const app = express();
-
 app.use(express.json());
 app.use(cors()); 
 
-// Phục vụ ảnh để Frontend có thể truy cập qua URL: http://localhost:5555/images/ten-anh.jpg
 app.use('/images', express.static('public/images'));
-
-// Điều hướng các request bắt đầu bằng /books sang file route
 app.use('/books', booksRoute);
 
-// Kết nối MongoDB và chạy Server
 mongoose
   .connect(mongoDBUrl)
   .then(() => {

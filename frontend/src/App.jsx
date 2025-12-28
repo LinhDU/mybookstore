@@ -19,6 +19,7 @@ import CategoryPage from "./pages/CategoryPage";
 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
 const UserLayout = () => {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="forgot-password" element={<ForgotPasswordPage />} />
 
           <Route path="/" element={<UserLayout />}>
             <Route index element={<Home />} />

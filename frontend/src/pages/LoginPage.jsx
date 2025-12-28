@@ -25,11 +25,11 @@ export default function LoginPage() {
     try {
       const res = await axios.post('http://localhost:5555/api/auth/login', formData);
 
-      // ✅ Lưu token và user info
+      // Lưu token và user info
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
-      // ✅ PHÂN NHÁNH THEO VAI TRÒ
+      // PHÂN NHÁNH THEO VAI TRÒ
       if (res.data.user.role === 'admin') {
         navigate('/admin/books'); // hoặc '/admin' nếu bạn có route index
       } else {
@@ -49,7 +49,7 @@ export default function LoginPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background:' #fcfbfcff', 
+      background:' #fdfaf6', 
       padding: '20px'
     }}
   >
@@ -83,6 +83,12 @@ export default function LoginPage() {
                   required
                 />
               </Form.Group>
+
+              <div className="text-end mb-3">
+                    <Link to="/forgot-password" className="text-decoration-none">
+                        Quên mật khẩu?
+                    </Link>
+                </div>
 
               <Button type="submit" className="w-100" variant="primary" disabled={loading}>
                 {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}

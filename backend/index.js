@@ -4,6 +4,8 @@ import cors from 'cors';
 import { PORT, mongoDBUrl } from './config.js';
 import booksRoute from './routes/booksRoute.js';
 
+import authRoute from './routes/authRoute.js';
+
 const app = express();
 
 app.use(express.json());
@@ -14,6 +16,9 @@ app.use('/images', express.static('public/images'));
 
 // Điều hướng các request bắt đầu bằng /books sang file route
 app.use('/books', booksRoute);
+
+// Đăng ký route auth
+app.use('/api/auth', authRoute); 
 
 // Kết nối MongoDB và chạy Server
 mongoose

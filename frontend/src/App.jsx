@@ -17,6 +17,9 @@ import AdminFeatured from "./admin/AdminFeatured";
 import SearchResult from "./pages/SearchResult";
 import CategoryPage from "./pages/CategoryPage";
 
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+
 const UserLayout = () => {
   return (
     <>
@@ -34,6 +37,9 @@ function App() {
     <FavoritesProvider>
       <Router>
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+
           <Route path="/" element={<UserLayout />}>
             <Route index element={<Home />} />
             <Route path="products" element={<AllProducts />} />
@@ -50,8 +56,11 @@ function App() {
             <Route path="books/edit/:id" element={<BookForm />} />
           </Route>
         </Routes>
+
       </Router>
     </FavoritesProvider>
+
+    
   );
 }
 

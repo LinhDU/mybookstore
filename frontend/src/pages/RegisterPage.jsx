@@ -7,9 +7,8 @@ export default function RegisterPage() {
     name: '',
     email: '',
     password: '',
-    confirmPassword: '' // 1. Đã sửa lỗi cảnh báo React
+    confirmPassword: '' 
   });
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -19,14 +18,13 @@ export default function RegisterPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Thêm kiểm tra mật khẩu khớp nhau ở frontend cho chắc chắn
+   
     if (formData.password !== formData.confirmPassword) {
         return alert("Mật khẩu xác nhận không khớp!");
     }
 
     setLoading(true);
     try {
-      // 2. Kiểm tra kỹ URL này có khớp với Backend bạn đã viết không
       await axios.post('http://localhost:5555/api/auth/register', {
         name: formData.name,
         email: formData.email,
@@ -36,7 +34,7 @@ export default function RegisterPage() {
       alert('Đăng ký thành công! Vui lòng đăng nhập.');
       navigate('/login');
     } catch (error) {
-      console.error(error); // In ra console để xem chi tiết lỗi
+      console.error(error);
       alert(error.response?.data?.message || 'Lỗi đăng ký (Có thể do Backend chưa bật hoặc sai URL)');
     } finally {
       setLoading(false);

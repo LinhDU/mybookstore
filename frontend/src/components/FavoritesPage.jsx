@@ -9,10 +9,8 @@ function FavoritesPage() {
   const { favorites, removeFavorite } = useContext(FavoritesContext);
   const navigate = useNavigate();
   
-  // Kiểm tra xem người dùng đã đăng nhập chưa (dựa vào token)
   const token = localStorage.getItem('token');
 
-  // TRƯỜNG HỢP 1: CHƯA ĐĂNG NHẬP
   if (!token) {
     return (
       <section className="featured-section py-5">
@@ -40,7 +38,6 @@ function FavoritesPage() {
     );
   }
 
-  // TRƯỜNG HỢP 2: ĐÃ ĐĂNG NHẬP
   return (
     <section className="featured-section all-products-page py-5">
       <Container>
@@ -52,7 +49,7 @@ function FavoritesPage() {
         {favorites.length === 0 ? (
           <div className="text-center py-5">
             <p className="text-muted">Danh sách yêu thích của bạn hiện đang trống.</p>
-            <Link to="/products" className="btn-read-more mt-2 d-inline-block">Khám phá sách ngay</Link>
+            <Link to="/products" className="btn-read-more mt-2 d-inline-block card-link ">Khám phá sách ngay</Link>
           </div>
         ) : (
           <Row className="g-4">
@@ -63,7 +60,8 @@ function FavoritesPage() {
                   className="btn-remove-wishlist"
                   title="Xóa khỏi danh sách yêu thích"
                   onClick={(e) => {
-                    e.preventDefault(); // Ngăn việc bị nhảy vào link chi tiết sách
+                    e.preventDefault(); 
+                    e.stopPropagation();
                     removeFavorite(book._id);
                   }}
                   style={{ 

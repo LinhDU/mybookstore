@@ -38,7 +38,6 @@ const AllProducts = () => {
           <Row className="g-4">
             {books.map((book) => (
               <Col lg={3} md={4} sm={6} key={book._id} className="mb-4">
-                {/* Dùng thẻ Link với class book-card-link để xóa gạch chân xanh */}
                 <Link to={`/book/${book._id}`} className="book-card-link">
                   <div className="book-card text-center">
                     <div className="book-image-wrapper">

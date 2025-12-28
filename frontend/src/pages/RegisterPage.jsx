@@ -9,6 +9,7 @@ export default function RegisterPage() {
     password: '',
     confirmPassword: ''
   });
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -18,17 +19,23 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      return alert("Mật khẩu xác nhận không khớp!");
+    }
+
     setLoading(true);
     try {
-      // Gửi chỉ name, email, password (không gửi confirmPassword)
       await axios.post('http://localhost:5555/api/auth/register', {
         name: formData.name,
         email: formData.email,
         password: formData.password
       });
+
       alert('Đăng ký thành công! Vui lòng đăng nhập.');
       navigate('/login');
     } catch (error) {
+      console.error(error);
       alert(error.response?.data?.message || 'Lỗi đăng ký');
     } finally {
       setLoading(false);
@@ -36,21 +43,13 @@ export default function RegisterPage() {
   };
 
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#fdfaf6',
-        padding: '20px'
-      }}
-    >
+    <div style={{ backgroundColor: '#fdfaf6', minHeight: '100vh' }}>
       <div className="container py-5">
         <div className="row justify-content-center">
           <div className="col-md-6">
             <div className="card p-4">
               <h2 className="text-center mb-4">Đăng ký</h2>
+
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label className="form-label">Họ tên</label>
@@ -63,6 +62,7 @@ export default function RegisterPage() {
                     required
                   />
                 </div>
+
                 <div className="mb-3">
                   <label className="form-label">Email</label>
                   <input
@@ -74,6 +74,7 @@ export default function RegisterPage() {
                     required
                   />
                 </div>
+
                 <div className="mb-3">
                   <label className="form-label">Mật khẩu</label>
                   <input
@@ -103,9 +104,11 @@ export default function RegisterPage() {
                   {loading ? 'Đang xử lý...' : 'Đăng ký'}
                 </button>
               </form>
+
               <p className="text-center mt-3">
                 Bạn đã có tài khoản? <Link to="/login">Đăng nhập ngay</Link>
               </p>
+
             </div>
           </div>
         </div>

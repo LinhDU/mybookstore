@@ -21,6 +21,16 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
+import { Navigate } from "react-router-dom";
+
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem('token'); // Hoặc lấy từ AuthContext nếu bạn có
+  if (!token) {
+    alert("Vui lòng đăng nhập để xem danh sách yêu thích!");
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 const UserLayout = () => {
   return (
     <>
@@ -48,7 +58,14 @@ function App() {
             <Route path="book/:id" element={<BookDetail />} />
             <Route path="search" element={<SearchResult />} />
             <Route path="category/:category" element={<CategoryPage />} />
-            <Route path="favorites" element={<FavoritesPage />} />
+            <Route 
+                  path="favorites" 
+                  element={
+                    <ProtectedRoute>
+                      <FavoritesPage />
+                    </ProtectedRoute>
+                  } 
+                />
           </Route>
 
           <Route path="/admin" element={<AdminLayout />}>

@@ -706,7 +706,7 @@ a {
 }
 
 .btn-add-admin:hover {
-  background-color: #F5E8B7!important;
+  background-color: #827854!important;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(179, 139, 89, 0.3);
 }
@@ -729,5 +729,13 @@ a {
 }
 
 .book-card-link:hover .book-title {
+  color: #b38b59 !important; 
+}
+.card-link{
+  text-decoration: none !important;
+  font-weight: 600 !important; 
+  color: #2f2f2f !important;       
+}
+.card-link:hover{
   color: #b38b59 !important; 
 }

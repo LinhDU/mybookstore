@@ -6,7 +6,6 @@ const Home = () => {
     <>
       <FeaturedHero />
       <FeaturedBooks />
-      {/* Các thành phần khác của trang chủ nếu có */}
     </>
   );
 };

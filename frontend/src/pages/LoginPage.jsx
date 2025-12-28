@@ -84,13 +84,13 @@ export default function LoginPage() {
                 />
               </Form.Group>
 
-              <Button type="submit" className="w-100" variant="primary" disabled={loading}>
+              <Button type="submit" className="w-100 btn-add-admin" variant="primary" disabled={loading}>
                 {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
               </Button>
             </Form>
 
-            <p className="text-center mt-3">
-              Bạn chưa có tài khoản? <Link to="/register">Đăng ký ngay</Link>
+            <p className="text-center mt-3 ">
+              Bạn chưa có tài khoản? <Link to="/register" className='card-link'>Đăng ký ngay</Link>
             </p>
           </div>
         </div>

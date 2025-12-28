@@ -4,11 +4,9 @@ import multer from 'multer';
 import path from 'path';
 
 const router = express.Router();
-
-// Cấu hình lưu trữ ảnh
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/images'); // Bạn cần tạo thư mục này thủ công ở Backend
+    cb(null, 'public/images');
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '-' + file.originalname);
@@ -16,13 +14,12 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// 1. Lấy tất cả sách (GET http://localhost:5555/books)
 router.get('/', async (req, res) => {
   try {
     const { q, category } = req.query;
     let filter = {};
 
-    // Tìm kiếm theo từ khóa
+    // Tìm kiếm theo từ
     if (q && q.trim() !== "") {
       filter.$or = [
         { title: { $regex: q.trim(), $options: 'i' } },
@@ -50,21 +47,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-
-
-// 2. Lấy 1 cuốn sách theo ID (GET http://localhost:5555/books/:id)
-// backend/routes/booksRoute.js
 router.get('/:id', async (req, res) => {
   try {
-    const { id } = req.params; // Lấy ID từ thanh địa chỉ
-    const book = await Book.findById(id); // Tìm đúng cuốn đó trong DB
+    const { id } = req.params; 
+    const book = await Book.findById(id);
 
     if (!book) {
       return res.status(404).json({ message: 'Không tìm thấy sách' });
     }
 
-    // Trả về trực tiếp object book để Frontend dễ xử lý
     return res.status(200).json(book);
   } catch (error) {
     console.log(error.message);
@@ -72,7 +63,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// 3. Thêm sách mới có kèm ảnh (POST http://localhost:5555/books)
 router.post('/', upload.single('image'), async (req, res) => {
   try {
     const newBook = {
@@ -86,7 +76,6 @@ router.post('/', upload.single('image'), async (req, res) => {
   }
 });
 
-// 4. Cập nhật sách có kèm ảnh (PUT http://localhost:5555/books/:id)
 router.put('/:id', upload.single('image'), async (req, res) => {
   try {
     const { id } = req.params;
@@ -105,7 +94,6 @@ router.put('/:id', upload.single('image'), async (req, res) => {
   }
 });
 
-// 5. Xóa sách (DELETE http://localhost:5555/books/:id)
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -116,7 +104,8 @@ router.delete('/:id', async (req, res) => {
     res.status(500).send({ message: error.message });
   }
 });
-// Cập nhật nhanh trạng thái Hero/Featured
+
+// Cập nhật trạng thái Hero/Featured
 router.patch('/status/:id', async (req, res) => {
   try {
     const { id } = req.params;

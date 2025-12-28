@@ -9,7 +9,7 @@ const bookSchema = mongoose.Schema({
     pages: { type: Number },
     isHero: { type: Boolean, default: false },      
     isFeatured: { type: Boolean, default: false },  
-    //Thông tin bổ sung
+    //Thông tin chi tiết
     publisher: { type: String },
     issuedBy: { type: String },
     pubDate: { type: Number },

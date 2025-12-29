@@ -10,12 +10,13 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/images', express.static('public/images'));
+
 app.use('/books', booksRoute);
 
-// Đăng ký route auth
+
 app.use('/api/auth', authRoute);
 
-// Kết nối MongoDB và chạy Server
+
 mongoose
   .connect(mongoDBUrl)
   .then(() => {

@@ -16,7 +16,7 @@ const AdminFeatured = () => {
   const handleStatusChange = async (id, field, value) => {
     try {
       await axios.patch(`http://localhost:5555/books/status/${id}`, { [field]: value });
-      fetchBooks(); // Load lại dữ liệu
+      fetchBooks();
     } catch (error) {
       alert("Lỗi khi cập nhật trạng thái");
     }

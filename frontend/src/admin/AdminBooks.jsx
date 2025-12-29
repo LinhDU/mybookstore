@@ -4,22 +4,19 @@ import axios from "axios";
 import { TextAlignCenter } from "lucide-react";
 
 function AdminBooks() {
-  const [books, setBooks] = useState([]); // Khởi tạo mảng rỗng
-  const [loading, setLoading] = useState(true); // Thêm trạng thái loading
+  const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Lấy danh sách sách từ Backend
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:5555/books`)
       .then((res) => {
-        console.log("Dữ liệu nhận được từ Server:", res.data); // Dòng này cực kỳ quan trọng để debug
+        console.log("Dữ liệu nhận được từ Server:", res.data);
 
-        // Kiểm tra: Nếu backend trả về { data: [...] }
         if (res.data && res.data.data) {
           setBooks(res.data.data);
         } 
-        // Nếu backend trả về mảng trực tiếp [...]
         else if (Array.isArray(res.data)) {
           setBooks(res.data);
         }
@@ -35,7 +32,6 @@ function AdminBooks() {
     if (window.confirm("Bạn có chắc muốn xóa cuốn sách này không?")) {
       axios.delete(`http://localhost:5555/books/${id}`)
         .then(() => {
-          // Xóa thành công thì lọc mảng dựa trên _id
           setBooks((prevBooks) => prevBooks.filter((b) => b._id !== id));
           alert("Đã xóa thành công!");
         })
@@ -89,7 +85,6 @@ function AdminBooks() {
                     </button>
                     <button 
                     className="btn-delete-admin"
-                    // SỬA TẠI ĐÂY: đổi book.id thành book._id
                     onClick={() => handleDelete(book._id)} 
                   >
                     Xóa

@@ -9,7 +9,6 @@ const FeaturedHero = () => {
   const [heroBooks, setHeroBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 1. Lấy danh sách sách từ database và lọc cuốn nào có isHero = true
   useEffect(() => {
     setLoading(true);
     axios.get('http://localhost:5555/books')
@@ -25,7 +24,6 @@ const FeaturedHero = () => {
       });
   }, []);
 
-  // Nếu đang tải dữ liệu
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh', backgroundColor: '#f3f2ec' }}>

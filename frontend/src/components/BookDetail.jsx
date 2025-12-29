@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react'; // Gộp useContext vào đây
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Container, Tabs, Tab, Row, Col, Spinner } from 'react-bootstrap';
 import { ChevronUp, ChevronDown, ShoppingCart } from 'lucide-react';
 import defaultBook from '../assets/default-book.png'; 
-import { FavoritesContext } from './FavoritesContext'; // Đảm bảo đúng đường dẫn file
+import { FavoritesContext } from './FavoritesContext';
 
 const BookDetail = () => {
   const { id } = useParams(); 
@@ -19,7 +19,6 @@ const BookDetail = () => {
     
     axios.get(`http://localhost:5555/books/${id}`)
       .then((res) => {
-        // Backend trả về res.data.data hoặc res.data
         setBook(res.data.data || res.data);
         setLoading(false);
       })
@@ -43,7 +42,6 @@ const BookDetail = () => {
 
   return (
     <div className="book-detail-page">
-      {/* PHẦN 1: THÔNG TIN CƠ BẢN */}
       <section className="book-top-section py-5">
         <Container>
           <Row className="align-items-start">
@@ -96,7 +94,6 @@ const BookDetail = () => {
         </Container>
       </section>
 
-      {/* PHẦN 2: CHI TIẾT SẢN PHẨM (Tabs) */}
       <section className="book-bottom-tabs py-5 bg-white">
         <Container>
           <Tabs defaultActiveKey="info" className="custom-detail-tabs mb-4">

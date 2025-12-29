@@ -6,22 +6,20 @@ import Button from "react-bootstrap/Button";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 
-import { useState, useEffect } from "react"; // 👈 Thêm useEffect
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 function Header() {
   const [keyword, setKeyword] = useState("");
-  const [user, setUser] = useState(null); // 👈 Lưu thông tin user
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // 👇 Lấy user từ localStorage khi component mount
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       try {
         setUser(JSON.parse(savedUser));
       } catch (e) {
-        // Nếu localStorage bị hỏng, xóa đi
         localStorage.removeItem('user');
       }
     }
@@ -35,28 +33,25 @@ function Header() {
   };
 
   const handleLogout = () => {
-    // Xóa thông tin đăng nhập
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
-    navigate('/'); // hoặc navigate('/login') nếu muốn
+    navigate('/');
   };
 
   return (
     <Navbar expand="lg" className="booksaw-navbar py-3">
       <Container fluid className="px-5">
-        {/* LOGO */}
         <Navbar.Brand as={Link} to="/" className="fw-bold fs-2">
           NEVERLAND
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          {/* MENU */}
           <Nav className="mx-auto fs-5" navbarScroll>
             <Nav.Link as={Link} to="/">Trang chủ</Nav.Link>
             <Nav.Link as={Link} to="/products">Thư viện</Nav.Link>
-            <Nav.Link as={Link} to="/new-books">Sách mới</Nav.Link>
+            {/* <Nav.Link as={Link} to="/new-books">Sách mới</Nav.Link> */}
             <Nav.Link as={Link} to="/favorites">Sách yêu thích</Nav.Link>
             <NavDropdown title="Thể loại">
               <NavDropdown.Item as={Link} to="/category/Tiểu thuyết">
@@ -74,7 +69,6 @@ function Header() {
             </NavDropdown>
           </Nav>
 
-          {/* SEARCH & AUTH */}
           <Form className="d-flex align-items-center gap-3">
             <Form.Control
               type="search"
@@ -89,7 +83,6 @@ function Header() {
               <FaShoppingCart size={20} />
             </Button>
 
-            {/* 👇 HIỂN THỊ THEO TRẠNG THÁI ĐĂNG NHẬP */}
             {user ? (
               <NavDropdown
                 title={

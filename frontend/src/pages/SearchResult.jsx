@@ -1,7 +1,7 @@
 import { useSearchParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-import axios from "axios"; // Khuyên dùng axios cho đồng bộ với các trang khác
+import axios from "axios"; 
 import defaultBook from '../assets/default-book.png';
 
 function SearchResult() {
@@ -18,10 +18,8 @@ function SearchResult() {
     }
 
     setLoading(true);
-    // Gọi API tìm kiếm
     axios.get(`http://localhost:5555/books?q=${encodeURIComponent(keyword)}`)
       .then(res => {
-        // Lưu ý: Backend của bạn cần xử lý query 'q' để lọc dữ liệu
         const data = res.data.data || res.data;
         setBooks(Array.isArray(data) ? data : []);
         setLoading(false);
@@ -36,19 +34,16 @@ function SearchResult() {
   return (
   <section className="featured-section all-products-page">
     <Container>
-      {/* 1. Nếu đang tải: Chỉ hiện Spinner */}
       {loading ? (
         <div className="text-center py-5">
           <Spinner animation="border" variant="warning" />
           <p className="mt-3 text-muted">Đang tìm kiếm trong kho sách...</p>
         </div>
       ) : (
-        /* 2. Nếu đã tải xong: Hiện kết quả */
         <>
           <div className="mb-5">
             <span className="featured-subtitle">KẾT QUẢ TÌM KIẾM</span>
             <h2 className="featured-title">"{keyword}"</h2>
-            {/* Chỉ hiện số lượng khi đã tải xong */}
             <p className="text-muted">Tìm thấy {books.length} cuốn sách phù hợp</p>
           </div>
 
@@ -80,5 +75,4 @@ function SearchResult() {
   </section>
 );
 }
-
 export default SearchResult;

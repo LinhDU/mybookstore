@@ -227,9 +227,9 @@ a {
 
 .featured-section { padding: 100px 0; }
 .featured-subtitle {
-  font-size: 1rem;
+  font-size: 1.3rem;
   letter-spacing: 3px;
-  color: #999;
+  color: #2f2f2f;
   text-transform: uppercase;
 }
 .featured-title {

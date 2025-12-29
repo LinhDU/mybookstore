@@ -44,7 +44,7 @@ const Footer = () => {
               <Col md={4} sm={6} className="footer-links-col">
                 <h5 className="footer-heading">TÀI KHOẢN CỦA TÔI</h5>
                 <ul className="list-unstyled">
-                  <li><Link to="/">Đăng nhập/Tạo mới tài khoản</Link></li>
+                  <li><Link to="/login">Đăng nhập/Tạo mới tài khoản</Link></li>
                   <li><Link to="/">Chi tiết tài khoản</Link></li>
                   <li><Link to="/">Lịch sử mua hàng</Link></li>
                 </ul>

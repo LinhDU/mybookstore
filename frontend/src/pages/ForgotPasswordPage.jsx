@@ -100,12 +100,12 @@ export default function ForgotPasswordPage() {
                 />
               </Form.Group>
 
-              <Button type="submit" className="w-100" variant="primary" disabled={loading}>
+              <Button type="submit" className="w-100  btn-add-admin" variant="primary" disabled={loading}>
                 {loading ? 'Đang xử lý...' : 'Đặt lại mật khẩu'}
               </Button>
 
-              <div className="text-center mt-3">
-                <Link to="/login">← Quay về đăng nhập</Link>
+              <div className="text-center mt-3 ">
+                <Link to="/login" className='card-link'>← Quay về đăng nhập</Link>
               </div>
             </Form>
           </div>

@@ -86,7 +86,7 @@ export default function LoginPage() {
                 </Form.Group>
 
                 <div className="text-end mb-3">
-                  <Link to="/forgot-password" className="text-decoration-none">
+                  <Link to="/forgot-password" className="text-decoration-none card-link">
                     Quên mật khẩu?
                   </Link>
                 </div>

@@ -44,7 +44,6 @@ function SearchResult() {
           <div className="mb-5">
             <span className="featured-subtitle">KẾT QUẢ TÌM KIẾM</span>
             <h2 className="featured-title">"{keyword}"</h2>
-            {/* Chỉ hiện số lượng khi đã tải xong */}
             <p className="text-muted">Tìm thấy {books.length} cuốn sách phù hợp</p>
           </div>
 

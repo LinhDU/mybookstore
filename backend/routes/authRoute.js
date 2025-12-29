@@ -5,7 +5,7 @@ import { User } from '../models/userModel.js';
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'mybookstore_secret_123';
 
-// ĐĂNG KÝ
+// Đăng ký
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -28,8 +28,7 @@ router.post('/register', async (req, res) => {
 });
 
 
-// ĐĂNG NHẬP
-
+// Đăng nhập
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -65,8 +64,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
-// QUÊN MẬT KHẨU 
+// Quên mật khẩu
 router.post('/forgot-password', async (req, res) => {
   try {
     const { email, newPassword } = req.body;
@@ -84,7 +82,6 @@ router.post('/forgot-password', async (req, res) => {
       return res.status(404).json({ message: 'Không tìm thấy tài khoản với email này' });
     }
 
-    // Gán mật khẩu mới (middleware pre('save') sẽ tự hash)
     user.password = newPassword;
     await user.save();
 

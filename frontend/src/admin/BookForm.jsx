@@ -6,38 +6,32 @@ import axios from "axios";
 
 const BookForm = () => {
   const navigate = useNavigate();
-  const { id } = useParams(); // Lấy ID từ URL
-  const [preview, setPreview] = useState(null); // Quản lý ảnh xem trước
+  const { id } = useParams();
+  const [preview, setPreview] = useState(null);
 
-  // Khởi tạo State với các trường khớp hoàn toàn với Schema Backend
   const [book, setBook] = useState({
     title: "", author: "", price: "", category: "", pages: "",
     publisher: "", issuedBy: "", pubDate: "", size: "",
     coverType: "", description: "", longDescription: "", image: null
   });
 
-  // ===== BƯỚC 1: LẤY DỮ LIỆU CŨ KHI Ở CHẾ ĐỘ SỬA =====
  useEffect(() => {
   if (id) {
-    console.log("Đang lấy dữ liệu cho ID:", id); // Kiểm tra xem ID có đúng không
+    console.log("Đang lấy dữ liệu cho ID:", id);
     
     axios.get(`http://localhost:5555/books/${id}`)
       .then((res) => {
-        console.log("Dữ liệu thô từ Server:", res.data); // XEM DÒNG NÀY TRONG CONSOLE (F12)
+        console.log("Dữ liệu thô từ Server:", res.data);
 
-        // Kiểm tra xem dữ liệu nằm ở đâu (res.data hay res.data.data)
         const fetchedBook = res.data.data || res.data;
 
         if (fetchedBook) {
           setBook({
             ...fetchedBook,
-            // Đảm bảo năm phát hành là số để hiện lên ô input number
             pubDate: fetchedBook.pubDate || ""
           });
 
-          // Hiển thị ảnh cũ nếu có
           if (fetchedBook.image) {
-            // Nếu image là link full thì để nguyên, nếu là tên file thì cộng chuỗi
             const imagePath = fetchedBook.image.startsWith('http') 
               ? fetchedBook.image 
               : `http://localhost:5555/images/${fetchedBook.image}`;
@@ -52,7 +46,6 @@ const BookForm = () => {
   }
 }, [id]);
 
-  // ===== BƯỚC 2: CẬP NHẬT STATE KHI NHẬP LIỆU (TWO-WAY BINDING) =====
   const handleChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
   };
@@ -60,20 +53,17 @@ const BookForm = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setBook({ ...book, image: file }); // Lưu file vào state để upload
-      setPreview(URL.createObjectURL(file)); // Tạo link tạm để xem trước
+      setBook({ ...book, image: file });
+      setPreview(URL.createObjectURL(file));
     }
   };
 
-  // ===== BƯỚC 3: GỬI DỮ LIỆU LÊN SERVER =====
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
 
-    // Đưa tất cả dữ liệu vào FormData
     Object.keys(book).forEach((key) => {
       if (key === 'image') {
-        // Chỉ gửi file lên nếu người dùng có chọn ảnh mới (image là 1 Object File)
         if (book[key] instanceof File) {
           formData.append('image', book[key]);
         }
@@ -84,11 +74,9 @@ const BookForm = () => {
 
     try {
       if (id) {
-        // Chế độ Sửa (PUT)
         await axios.put(`http://localhost:5555/books/${id}`, formData);
         alert("Cập nhật sách thành công!");
       } else {
-        // Chế độ Thêm mới (POST)
         await axios.post(`http://localhost:5555/books`, formData);
         alert("Thêm sách mới thành công!");
       }
@@ -110,7 +98,6 @@ const BookForm = () => {
 
         <Form onSubmit={handleSubmit}>
           <Row>
-            {/* Cột trái: Form nhập liệu */}
             <Col lg={8}>
               <Card className="form-card mb-4 shadow-sm">
                 <Card.Body>
@@ -119,7 +106,7 @@ const BookForm = () => {
                     <Form.Label>Tên tiêu đề sách</Form.Label>
                     <Form.Control
                       name="title"
-                      value={book.title || ""} // QUAN TRỌNG: Gắn giá trị từ State
+                      value={book.title || ""}
                       onChange={handleChange}
                       required
                     />
@@ -204,7 +191,6 @@ const BookForm = () => {
               </Card>
             </Col>
 
-            {/* Cột phải: Ảnh và Nút lưu */}
             <Col lg={4}>
               <Card className="form-card mb-4 shadow-sm text-center">
                 <Card.Body>
